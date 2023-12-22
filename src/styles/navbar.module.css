@@ -1,0 +1,38 @@
+:root{
+    --primary : #32292f;
+    --secondary : #575366;
+    --positive : #6E7DAB;
+    --light : #c6c5b9;
+    --negative : #db3a34;
+}
+
+.navbar{
+    background-color: var(--primary); 
+    display: flex;
+    padding: 0px 20px;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+
+.navItems{
+    display: flex;
+}
+
+
+.navItems a{
+    text-decoration: none;
+    color:inherit;
+    font-size: 20px;
+    padding: 10% 7%;
+}
+
+.navItems a:hover{
+    background-color:var(--secondary);
+}

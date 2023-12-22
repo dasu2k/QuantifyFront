@@ -1,0 +1,57 @@
+:root{
+    --primary : #32292f;
+    --secondary : #575366;
+    --positive : #6E7DAB;
+    --light : #c6c5b9;
+    --negative : #db3a34;
+}
+
+.Food{
+    height: 700px;
+    background-color: var(--secondary);
+    padding: 10px;
+    display: flex;
+}
+
+.Tab{
+    background-color: var(--positive);
+    border-radius: 3%;
+}
+
+td{
+    color: #fff;
+    font-weight: 400;
+    padding: 0.65em 2em;
+}
+
+th{
+    padding: 1em;
+}
+
+
+
+.FoodInput{
+    margin: 3%;
+}
+
+
+.FoodInput form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .FoodInput label {
+    margin-bottom: 5px;
+  }
+  
+  .FoodInput input {
+    margin-bottom: 10px;
+  }
+
+
+
+.foodStats{
+    margin: 2%;
+    display: flex;
+}
