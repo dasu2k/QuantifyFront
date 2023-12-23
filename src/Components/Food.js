@@ -25,7 +25,7 @@ function Food() {
     
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:6969/food');
+        const response = await axios.get('https://quantifyback.onrender.com/food');
         setFoods(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -52,8 +52,8 @@ function Food() {
         calories:0,
         protein:0
       })
-      await axios.post('http://localhost:6969/food',newFood);
-      const response = await axios.get("http://localhost:6969/food");
+      await axios.post('https://quantifyback.onrender.com/food',newFood);
+      const response = await axios.get("https://quantifyback.onrender.com/food");
       setFoods(response.data);
     }
     catch(err){
