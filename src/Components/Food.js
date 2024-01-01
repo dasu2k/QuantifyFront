@@ -18,14 +18,11 @@ function Food() {
     protein:0
   });
 
-  
-
 
   useEffect(() => {
-    
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://quantifyback.onrender.com/food');
+        const response = await axios.get('http://localhost:6969/food');
         setFoods(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -52,8 +49,8 @@ function Food() {
         calories:0,
         protein:0
       })
-      await axios.post('https://quantifyback.onrender.com/food',newFood);
-      const response = await axios.get("https://quantifyback.onrender.com/food");
+      await axios.post('http://localhost:6969/food',newFood);
+      const response = await axios.get("http://localhost:6969/food");
       setFoods(response.data);
     }
     catch(err){
@@ -105,4 +102,3 @@ function Food() {
 }
 
 export default Food;
-

@@ -8,8 +8,6 @@ function Navbar() {
     <div className={navStyle.navbar}>
       <div className={navStyle.navItems}>
         <Link to='/food'>Food</Link>
-        <Link to='/exercise'>Exercise</Link>
-        <Link to='/money'>Money</Link>
       </div>
       <div className={navStyle.logo}>Quantify</div>
         
