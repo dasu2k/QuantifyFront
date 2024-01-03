@@ -1,23 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
 import { useState,useEffect } from 'react';
 import styles from '../styles/food.module.css';
 
 import DailyFoodStats from './SubComponents/DailyFoodStats';
+import UserContext from '../UserContext';
 
 function Food() {
   
   const date = new Date().toDateString();
-  
-
   const [foods, setFoods] = useState([{}]);
-  
   const [newFood , setNewFood] = useState({
     name:'',
     calories:0,
     protein:0
   });
 
+
+  const {user,setUser} = useContext(UserContext);
+
+  console.log(user);
 
   useEffect(() => {
     const fetchData = async () => {

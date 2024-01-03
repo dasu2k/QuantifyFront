@@ -2,7 +2,7 @@ import React from 'react'
 import styles from '../styles/register.module.css';
 import { useState } from 'react';
 import axios from 'axios';
-import { setToken } from '../AuthService';
+import { removeToken, setToken } from '../AuthService';
 import { useNavigate } from 'react-router-dom';
 function Login() {
   const navigate = useNavigate();
@@ -30,7 +30,8 @@ function Login() {
       })
       navigate('/food');
     }catch(err){
-      console.log(err);
+      console.log("this error is from Login component :" + err);
+      removeToken();
     }
   }
 
