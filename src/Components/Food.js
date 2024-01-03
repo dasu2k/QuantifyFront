@@ -4,27 +4,25 @@ import { useState,useEffect } from 'react';
 import styles from '../styles/food.module.css';
 
 import DailyFoodStats from './SubComponents/DailyFoodStats';
-import UserContext from '../UserContext';
+
+import { getToken } from '../AuthService';
 
 function Food() {
-  
   const date = new Date().toDateString();
-  const [foods, setFoods] = useState([{}]);
+  const [foods, setFoods] = useState([]);
   const [newFood , setNewFood] = useState({
     name:'',
     calories:0,
     protein:0
   });
 
-
-  const {user,setUser} = useContext(UserContext);
-
-  console.log(user);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:6969/food');
+        const headers = {
+          Authorization : `Bearer ${getToken()}`
+        }
+        const response = await axios.get('http://localhost:6969/food', {headers});
         setFoods(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -45,14 +43,18 @@ function Food() {
 
   const handleSubmit = async(e) =>{
     e.preventDefault();
+    const headers = {
+      Authorization : `Bearer ${getToken()}`
+    }
+    
     try{
       setNewFood({
         name:'',
         calories:0,
         protein:0
-      })
-      await axios.post('http://localhost:6969/food',newFood);
-      const response = await axios.get("http://localhost:6969/food");
+      })  
+      await axios.post('http://localhost:6969/food',  newFood , {headers});
+      const response = await axios.get("http://localhost:6969/food" , {headers});
       setFoods(response.data);
     }
     catch(err){
@@ -60,8 +62,6 @@ function Food() {
     }
   }
 
- 
-  
   return (
     <div className={styles.Food}>
       
