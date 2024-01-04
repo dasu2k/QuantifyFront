@@ -1,16 +1,25 @@
 import React from 'react';
 import navStyle from '../styles/navbar.module.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { isAuthenticated, removeToken } from '../AuthService';
 
 
-function Navbar() {
+function Navbar(props) {
+  const navigate = useNavigate(); 
+
+  const logout = () => {
+    removeToken();
+    navigate('/login');
+    props.authSetter(false);
+  }
+
   return (
     <div className={navStyle.navbar}>
-      <div className={navStyle.navItems}>
-        <Link to='/food'>Food</Link>
-      </div>
+      
       <div className={navStyle.logo}>Quantify</div>
-        
+      <div className={navStyle.navItems}>
+        <button onClick={logout}>logout</button>
+      </div>
     </div>
   )
 }

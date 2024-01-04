@@ -2,8 +2,10 @@ import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
 import styles from '../styles/register.module.css';
-function Registration() {
-
+import { isAuthenticated, setToken } from '../AuthService';
+import { redirect, useNavigate } from 'react-router-dom';
+function Registration(props) {
+    const navigateTo = useNavigate(); 
     const [user , setUser] = useState({
         username : '',
         password : '',
@@ -27,6 +29,7 @@ function Registration() {
                 password : '',
                 email : ''
             });
+            navigateTo('/login');
         }
         catch(err){
             console.log(err);

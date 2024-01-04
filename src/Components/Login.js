@@ -2,15 +2,17 @@ import React from 'react'
 import styles from '../styles/register.module.css';
 import { useState } from 'react';
 import axios from 'axios';
-import { removeToken, setToken } from '../AuthService';
+import { isAuthenticated, removeToken, setToken } from '../AuthService';
 import { useNavigate } from 'react-router-dom';
-function Login() {
+
+
+function Login(props) {
   const navigate = useNavigate();
   const [user,setUser] = useState({
     email:'',
     password:'',
   })
-  
+
   const handleChange = (e) =>{
     setUser((prevUser)=>({
       ...prevUser,
@@ -29,10 +31,12 @@ function Login() {
         password:'',
       })
       navigate('/food');
+      props.authSetter(isAuthenticated());
     }catch(err){
       console.log("this error is from Login component :" + err);
       removeToken();
     }
+    
   }
 
   return (

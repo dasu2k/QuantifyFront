@@ -1,34 +1,39 @@
 import Navbar from './Components/Navbar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Food from './Components/Food';
-import Exercise from './Components/Exercise';
+
 import Registration from './Components/Registration';
 import Login from './Components/Login';
-import { useEffect, useState } from 'react';
 import ProtectedRoute from './Components/ProtectedRoute';
-import axios from 'axios';
 
+import AuthRoutes from './Components/AuthRoutes';
+import { useEffect, useState } from 'react';
+import { isAuthenticated } from './AuthService';
 
 
 function App() {
   
+  const [isAuth,setIsAuth] = useState(false);
+  const message = "this is props sent from app";
+  useEffect(()=>{
+    const authCheck = () =>{
+      setIsAuth(isAuthenticated());
+    }
+    authCheck();
+  },[])
+
   return (
     <div className="App">
-      
         <Router>
-          <Navbar/>
+           <Navbar authSetter = {setIsAuth}/>
           <Routes>
-
-            <Route path='register' element={<Registration />} />
-            <Route path='login' element={<Login />} />
-            <Route element={<ProtectedRoute/>}>
-             
-                <Route element={<Food/>} path='/food'/>
-                <Route element={<Exercise/>} path='/exercise'/>
-              
+            <Route element={<AuthRoutes/>}>
+              <Route path='register' element={<Registration authSetter = {setIsAuth}/>} />
+              <Route path='login' element={<Login authSetter = {setIsAuth}/>}/>
             </Route>
-
-            
+            <Route element={<ProtectedRoute/>}>
+                <Route element={<Food/>} path='/food'/>
+            </Route>
           </Routes>
         </Router>
     </div>

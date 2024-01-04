@@ -9,9 +9,6 @@ function DailyFoodStats({foods}) {
         calories:0,
         protein:0
     });
-
-    
-
     useEffect(()=>{
         var cals = 0;
         var prot = 0;
@@ -33,10 +30,10 @@ function DailyFoodStats({foods}) {
   return (
     <div>
         <div className={styles.foodStats}>
-        <label>calories</label>
-        <h2>{stats.calories}</h2>
-        <label>protein</label>
-        <h2>{stats.protein}</h2>
+          <label>calories</label>
+            <h2>{stats.calories}</h2>
+          <label>protein</label>
+            <h2>{stats.protein}</h2>
       </div>
     </div>
   )
