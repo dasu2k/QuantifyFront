@@ -8,13 +8,29 @@ import ProtectedRoute from './Components/ProtectedRoute';
 
 import AuthRoutes from './Components/AuthRoutes';
 import { useEffect, useState } from 'react';
-import { isAuthenticated } from './AuthService';
+import { getToken, isAuthenticated } from './AuthService';
+import UserContext from './Components/UserContext';
+import axios from 'axios';
 
 
 function App() {
-  
+  const [user,setUser] = useState({});
   const [isAuth,setIsAuth] = useState(false);
-  const message = "this is props sent from app";
+  useEffect(()=>{
+    const fetchUser=()=>{
+      try{
+        const headers = {
+          Authorization : `Bearer ${getToken()}`
+        };
+        const response = axios.get("http://localhost:6969/user",{headers});
+        console.log(response.data);
+      }catch(err){
+        console(err);
+      }
+    }
+    fetchUser();
+  },[])
+  console.log("user data in app comp : "+JSON.stringify(user));
   useEffect(()=>{
     const authCheck = () =>{
       setIsAuth(isAuthenticated());
@@ -25,7 +41,9 @@ function App() {
   return (
     <div className="App">
         <Router>
-           <Navbar authSetter = {setIsAuth}/>
+          <UserContext.Provider value={user}>
+            <Navbar authSetter = {setIsAuth}/>
+          </UserContext.Provider>
           <Routes>
             <Route element={<AuthRoutes/>}>
               <Route path='register' element={<Registration authSetter = {setIsAuth}/>} />

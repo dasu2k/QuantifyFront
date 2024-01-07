@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import navStyle from '../styles/navbar.module.css';
 import { useNavigate } from 'react-router-dom';
-import { isAuthenticated, removeToken } from '../AuthService';
+import { removeToken } from '../AuthService';
+import UserContext from './UserContext';
 
 
 function Navbar(props) {
-  const navigate = useNavigate(); 
 
+  const navigate = useNavigate();
+  const user = useContext(UserContext);
+  
+  console.log("userdata recieved from user context : " + JSON.stringify(user));
   const logout = () => {
     removeToken();
     navigate('/login');
@@ -15,9 +19,9 @@ function Navbar(props) {
 
   return (
     <div className={navStyle.navbar}>
-      
       <div className={navStyle.logo}>Quantify</div>
       <div className={navStyle.navItems}>
+        <p>welcome</p>
         <button onClick={logout}>logout</button>
       </div>
     </div>

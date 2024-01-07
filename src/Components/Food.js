@@ -1,14 +1,15 @@
-import React, { useContext } from 'react'
-import axios from 'axios'
+import React, { useContext } from 'react';
+import axios from 'axios';
 import { useState,useEffect } from 'react';
 import styles from '../styles/food.module.css';
 
 import DailyFoodStats from './SubComponents/DailyFoodStats';
-
 import { getToken } from '../AuthService';
+import UserContext from './UserContext';
 
 function Food() {
   const date = new Date().toDateString();
+  
   const [foods, setFoods] = useState([]);
   const [newFood , setNewFood] = useState({
     name:'',
@@ -25,10 +26,9 @@ function Food() {
         const response = await axios.get('http://localhost:6969/food', {headers});
         setFoods(response.data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.log('Error fetching data:', error);
       }
     };
-
     fetchData();
   }, []);
 
@@ -77,7 +77,7 @@ function Food() {
           </thead>
           <tbody>
             {foods.map((food)=>(
-              <tr key={food.id}>
+              <tr >
                 <td>{food.name}</td>
                 <td>{food.calories}</td>
                 <td>{food.protein}</td>

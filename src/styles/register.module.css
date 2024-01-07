@@ -1,5 +1,14 @@
 /* Registration.module.css */
 
+:root{
+  --primary : #32292f;
+  --secondary : #575366;
+  --positive : #6E7DAB;
+  --light : #c6c5b9;
+  --negative : #db3a34;
+}
+
+
 .registration {
     display: flex;
     align-items: center;
@@ -32,7 +41,7 @@
   }
   
   button {
-    background-color: #4caf50;
+    background-color: var(--positive);
     color: white;
     padding: 10px 15px;
     border: none;
@@ -41,6 +50,6 @@
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: var(--primary);
   }
   
