@@ -95,7 +95,7 @@ function Food() {
                 <input type='text' name='calories' required='true' value ={newFood.calories} onChange={handleChange}/>
                 <label>protein</label>
                 <input type='text' name='protein' required='true' value ={newFood.protein} onChange={handleChange}/>
-                <button type='submit' >submit</button>
+                <button type='submit' onSubmit={handleSubmit}>submit</button>
               </form>
         </div>
         <DailyFoodStats foods={foods}/>
