@@ -88,14 +88,14 @@ function Food() {
       <div className={styles.SecondHalf}>
         <p className={styles.Date}>Create a new entry</p>
         <div className={styles.FoodInput}>
-              <form onSubmit={formatedDate}>
+              <form onSubmit={handleSubmit}>
                 <label>food</label>
                 <input type='text' name='name'  required='true' value ={newFood.name} onChange={handleChange}/>
                 <label>calories</label>
                 <input type='text' name='calories' required='true' value ={newFood.calories} onChange={handleChange}/>
                 <label>protein</label>
                 <input type='text' name='protein' required='true' value ={newFood.protein} onChange={handleChange}/>
-                <button type='submit' onSubmit={handleSubmit}>submit</button>
+                <button type='submit'>submit</button>
               </form>
         </div>
         <DailyFoodStats foods={foods}/>
