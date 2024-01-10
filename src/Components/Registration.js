@@ -22,7 +22,7 @@ function Registration(props) {
 
         
         try{
-            await axios.post("http://localhost:6969/user" , user);
+            await axios.post("https://quantifyback.onrender.com/user" , user);
             alert("registration successful");
             setUser({
                 username : '',

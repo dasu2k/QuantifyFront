@@ -24,7 +24,7 @@ function Login(props) {
   const handleSubmit= async(e)=>{
     e.preventDefault();
     try{
-      const response = await axios.post("http://localhost:6969/login",user);
+      const response = await axios.post("https://quantifyback.onrender.com/login",user);
       console.log("recieved data from backend after login submit: " +  JSON.stringify(response.data));
       setResponseMessage(response.data.message);
       if(response.data.token)
