@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import navStyle from '../styles/navbar.module.css';
 import { useNavigate } from 'react-router-dom';
-import { removeToken } from '../AuthService';
+import { isAuthenticated, removeToken } from '../AuthService';
 import UserContext from './UserContext';
 
 
@@ -23,7 +23,9 @@ function Navbar(props) {
       <div className={navStyle.navItems}>
         <p>welcome , john doe</p>
         <button>profile</button>
-        <button onClick={logout}>logout</button>
+        {isAuthenticated()?
+        <button onClick={logout}>logout</button>:<button onClick={navigate('/register')}>register</button>
+    }
       </div>
     </div>
   )
