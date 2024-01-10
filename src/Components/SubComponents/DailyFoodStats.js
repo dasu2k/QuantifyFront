@@ -30,10 +30,10 @@ function DailyFoodStats({foods}) {
   return (
     <div>
         <div className={styles.foodStats}>
-          <label>calories</label>
-            <h2>{stats.calories}</h2>
-          <label>protein</label>
-            <h2>{stats.protein}</h2>
+          <label>calories:</label>
+            <p>{stats.calories}</p>
+          <label>protein:</label>
+            <p>{stats.protein}</p>
       </div>
     </div>
   )

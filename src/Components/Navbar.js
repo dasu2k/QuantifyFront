@@ -21,7 +21,8 @@ function Navbar(props) {
     <div className={navStyle.navbar}>
       <div className={navStyle.logo}>Quantify</div>
       <div className={navStyle.navItems}>
-        <p>welcome</p>
+        <p>welcome , john doe</p>
+        <button>profile</button>
         <button onClick={logout}>logout</button>
       </div>
     </div>

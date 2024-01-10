@@ -2,14 +2,13 @@ import React, { useContext } from 'react';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 import styles from '../styles/food.module.css';
-
 import DailyFoodStats from './SubComponents/DailyFoodStats';
 import { getToken } from '../AuthService';
-import UserContext from './UserContext';
+import moment from 'moment';
 
 function Food() {
   const date = new Date().toDateString();
-  
+  const formatedDate = moment().format('DD-MM-YYYY dddd');
   const [foods, setFoods] = useState([]);
   const [newFood , setNewFood] = useState({
     name:'',
@@ -23,7 +22,7 @@ function Food() {
         const headers = {
           Authorization : `Bearer ${getToken()}`
         }
-        const response = await axios.get('http://localhost:6969/food', {headers});
+        const response = await axios.get('https://quantifyback.onrender.com/food', {headers});
         setFoods(response.data);
       } catch (error) {
         console.log('Error fetching data:', error);
@@ -53,8 +52,8 @@ function Food() {
         calories:0,
         protein:0
       })  
-      await axios.post('http://localhost:6969/food',  newFood , {headers});
-      const response = await axios.get("http://localhost:6969/food" , {headers});
+      await axios.post('https://quantifyback.onrender.com/food',  newFood , {headers});
+      const response = await axios.get("https://quantifyback.onrender.com/food" , {headers});
       setFoods(response.data);
     }
     catch(err){
@@ -65,8 +64,8 @@ function Food() {
   return (
     <div className={styles.Food}>
       
-      <div>
-      <h1>{date}</h1>
+      <div className={styles.firstHalf}>
+      <p className={styles.Date}>{formatedDate}</p>
         <table className={styles.Tab}>
           <thead>
             <tr>
@@ -86,19 +85,21 @@ function Food() {
           </tbody>
         </table>
       </div>
-      
-      <div className={styles.FoodInput}>
-            <form onSubmit={handleSubmit}>
-              <label>food</label>
-              <input type='text' name='name'  required='true' value ={newFood.name} onChange={handleChange}/>
-              <label>calories</label>
-              <input type='text' name='calories' required='true' value ={newFood.calories} onChange={handleChange}/>
-              <label>protein</label>
-              <input type='text' name='protein' required='true' value ={newFood.protein} onChange={handleChange}/>
-              <button type='submit' >submit</button>
-            </form>
+      <div className={styles.SecondHalf}>
+        <p className={styles.Date}>Create a new entry</p>
+        <div className={styles.FoodInput}>
+              <form onSubmit={formatedDate}>
+                <label>food</label>
+                <input type='text' name='name'  required='true' value ={newFood.name} onChange={handleChange}/>
+                <label>calories</label>
+                <input type='text' name='calories' required='true' value ={newFood.calories} onChange={handleChange}/>
+                <label>protein</label>
+                <input type='text' name='protein' required='true' value ={newFood.protein} onChange={handleChange}/>
+                <button type='submit' >submit</button>
+              </form>
+        </div>
+        <DailyFoodStats foods={foods}/>
       </div>
-      <DailyFoodStats foods={foods}/>
     </div>
   )
 }

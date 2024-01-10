@@ -1,13 +1,13 @@
 :root{
-    --primary : #32292f;
-    --secondary : #575366;
-    --positive : #6E7DAB;
-    --light : #c6c5b9;
-    --negative : #db3a34;
+    --base : #0D1B2A;
+    --primary : #1B263B;
+    --secondary : #415A77;
+    --lighter : #778DA9;
+    --white : #E0E1DD;
 }
 
 .navbar{
-    background-color: var(--primary); 
+    background-color:  #415A77;
     display: flex;
     padding: 0px 20px;
     height: 60px;
@@ -26,13 +26,13 @@
 }
 
 
-.navItems a{
+.navItems button{
     text-decoration: none;
     color:inherit;
-    font-size: 20px;
-    padding: 10% 7%;
+    font-size: 14px;
+    margin: 10px;
 }
 
-.navItems a:hover{
-    background-color:var(--secondary);
+.navItems button:hover{
+    background-color: #415A77;
 }
