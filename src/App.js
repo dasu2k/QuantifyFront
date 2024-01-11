@@ -1,5 +1,5 @@
 import Navbar from './Components/Navbar';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, json } from 'react-router-dom';
 import Food from './Components/Food';
 
 import Registration from './Components/Registration';
@@ -14,29 +14,29 @@ import axios from 'axios';
 
 
 function App() {
-  const [user,setUser] = useState({});
+  const [user,setUser] = useState('');
   const [isAuth,setIsAuth] = useState(false);
   useEffect(()=>{
-    const fetchUser=()=>{
+    const fetchUser= async ()=>{
       try{
         const headers = {
           Authorization : `Bearer ${getToken()}`
         };
-        const response = axios.get("http://localhost:6969/user",{headers});
-        console.log(response.data);
+        const response = await axios.get("https://quantifyback.onrender.com/user",{headers});
+        setUser(response.data[0].username);
       }catch(err){
-        console(err);
+        console.log(err);
       }
     }
-    fetchUser();
-  },[])
-  console.log("user data in app comp : "+JSON.stringify(user));
-  useEffect(()=>{
+
     const authCheck = () =>{
       setIsAuth(isAuthenticated());
     }
+
     authCheck();
-  },[])
+    fetchUser();
+
+  },[]);
 
   return (
     <div className="App">

@@ -9,23 +9,38 @@ function Navbar(props) {
 
   const navigate = useNavigate();
   const user = useContext(UserContext);
-  
-  console.log("userdata recieved from user context : " + JSON.stringify(user));
+  console.log(user);
   const logout = () => {
     removeToken();
     navigate('/login');
     props.authSetter(false);
   }
 
+  const registerBtn = () =>{
+    navigate('/register');
+  }
+  const loginBtn = () =>{
+    navigate('/login');
+  }
+
   return (
     <div className={navStyle.navbar}>
       <div className={navStyle.logo}>Quantify</div>
       <div className={navStyle.navItems}>
-        <p>welcome , john doe</p>
-        <button>profile</button>
+        
+        
         {isAuthenticated()?
-        <button onClick={logout}>logout</button>:<button onClick={navigate('/register')}>register</button>
-    }
+          <div style={{display:'flex'}}>
+            <p>welcome {user}</p>
+            <button onClick={logout}>logout</button>
+            <button>profile</button>
+          </div>
+          :
+          <div>
+            <button onClick={loginBtn}>login</button>
+            <button onClick={registerBtn}>register</button>
+          </div>
+        }
       </div>
     </div>
   )

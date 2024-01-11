@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '../styles/register.module.css';
 import { useState } from 'react';
 import axios from 'axios';
 import { isAuthenticated, setToken } from '../AuthService';
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 
 
 function Login(props) {
