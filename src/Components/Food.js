@@ -86,18 +86,27 @@ function Food() {
         </table>
       </div>
       <div className={styles.SecondHalf}>
-        <p className={styles.Date}>Create a new entry</p>
+        <p className={styles.innerHeading}>Create a new entry</p>
         <div className={styles.FoodInput}>
               <form onSubmit={handleSubmit}>
-                <label>food</label>
-                <input type='text' name='name'  required='true' value ={newFood.name} onChange={handleChange}/>
-                <label>calories</label>
-                <input type='text' name='calories' required='true' value ={newFood.calories} onChange={handleChange}/>
-                <label>protein</label>
-                <input type='text' name='protein' required='true' value ={newFood.protein} onChange={handleChange}/>
+                <div>
+                  <label>food</label>
+                  <input type='text' name='name'  required='true' value ={newFood.name} onChange={handleChange}/>
+                </div>
+
+                <div>
+                  <label>calories</label>
+                  <input type='text' name='calories' required='true' value ={newFood.calories} onChange={handleChange}/>
+                </div>
+                <div>
+                  <label>protein</label>
+                  <input type='text' name='protein' required='true' value ={newFood.protein} onChange={handleChange}/>
+                </div>
                 <button type='submit'>submit</button>
               </form>
         </div>
+        <br></br>
+        <p>Today's intake</p>
         <DailyFoodStats foods={foods}/>
       </div>
     </div>

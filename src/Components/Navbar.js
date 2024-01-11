@@ -31,9 +31,9 @@ function Navbar(props) {
         
         {isAuthenticated()?
           <div style={{display:'flex'}}>
-            <p>welcome {user}</p>
-            <button onClick={logout}>logout</button>
+            <p>welcome,  {user}</p>
             <button>profile</button>
+            <button onClick={logout}>logout</button>
           </div>
           :
           <div>
