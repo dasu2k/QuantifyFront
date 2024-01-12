@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect,useState } from 'react';
-import axios from 'axios';
-import styles from '../../styles/food.module.css'
+import styles from '../../styles/food.module.css';
+
 function DailyFoodStats({foods}) {
     
     const [stats,setStats] = useState({
@@ -30,10 +30,15 @@ function DailyFoodStats({foods}) {
   return (
     <div>
         <div className={styles.foodStats}>
-          <label>calories:</label>
+          
+          <div>
+            <label>calories:</label>
             <p>{stats.calories}</p>
-          <label>protein:</label>
+            </div>
+          <div>
+            <label>protein:</label>
             <p>{stats.protein}</p>
+          </div>
       </div>
     </div>
   )

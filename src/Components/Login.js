@@ -3,7 +3,7 @@ import styles from '../styles/register.module.css';
 import { useState } from 'react';
 import axios from 'axios';
 import { isAuthenticated, setToken } from '../AuthService';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function Login(props) {

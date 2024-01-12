@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet , Navigate} from 'react-router-dom'
-import { getToken, isAuthenticated } from '../AuthService'
+import { isAuthenticated } from '../AuthService'
 
 function ProtectedRoute() {
     console.log("is authenticated: "+isAuthenticated());
