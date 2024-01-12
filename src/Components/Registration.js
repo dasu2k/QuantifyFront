@@ -22,14 +22,18 @@ function Registration(props) {
 
         
         try{
-            await axios.post("https://quantifyback.onrender.com/user" , user);
-            alert("registration successful");
-            setUser({
+            const response = await axios.post("http://localhost:6969/user" , user);
+            if(response.data == "email already exists"){
+              alert(response.data);
+              setUser({
                 username : '',
                 password : '',
                 email : ''
             });
-            navigateTo('/login');
+            }else{
+              alert("resigtration successful");
+              navigateTo('/login');
+          }
         }
         catch(err){
             console.log(err);
