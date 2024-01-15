@@ -8,8 +8,7 @@ import ProtectedRoute from './Components/ProtectedRoute';
 
 import AuthRoutes from './Components/AuthRoutes';
 import { useEffect, useState } from 'react';
-import { getToken, isAuthenticated } from './AuthService';
-import UserContext from './Components/UserContext';
+import {  getToken, isAuthenticated } from './AuthService';
 import axios from 'axios';
 
 
@@ -17,7 +16,8 @@ function App() {
   const [user,setUser] = useState('');
   const [isAuth,setIsAuth] = useState(false);
   useEffect(()=>{
-    const fetchUser= async ()=>{
+    
+    const fetchUser = async() =>{
       try{
         const headers = {
           Authorization : `Bearer ${getToken()}`
@@ -28,26 +28,21 @@ function App() {
         console.log(err);
       }
     }
-
     const authCheck = () =>{
       setIsAuth(isAuthenticated());
     }
-
-    authCheck();
     fetchUser();
-
+    authCheck();
   },[]);
 
   return (
     <div className="App">
         <Router>
-          <UserContext.Provider value={user}>
-            <Navbar authSetter = {setIsAuth}/>
-          </UserContext.Provider>
+            <Navbar authSetter = {setIsAuth} username = {user}/>
           <Routes>
             <Route element={<AuthRoutes/>}>
               <Route path='register' element={<Registration authSetter = {setIsAuth}/>} />
-              <Route path='login' element={<Login authSetter = {setIsAuth}/>}/>
+              <Route path='login' element={<Login authSetter = {setIsAuth} userSetter = {setUser} />}/>
             </Route>
             <Route element={<ProtectedRoute/>}>
                 <Route element={<Food/>} path='/food'/>

@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 function Login(props) {
   const navigate = useNavigate();
   const [responseMessage,setResponseMessage] = useState('');
+
   const [user,setUser] = useState({
     email:'',
     password:'',
@@ -25,7 +26,7 @@ function Login(props) {
     e.preventDefault();
     try{
       const response = await axios.post("https://quantifyback.onrender.com/login",user);
-      console.log("recieved data from backend after login submit: " +  JSON.stringify(response.data));
+      //console.log("recieved data from backend after login submit: " +  JSON.stringify(response.data));
       setResponseMessage(response.data.message);
       if(response.data.token)
       {
@@ -36,7 +37,8 @@ function Login(props) {
         email:'',
         password:'',
       })
-      
+      //console.log("user name after login " + response.data.username);
+      props.userSetter(response.data.username);
       props.authSetter(isAuthenticated());
     }catch(err){
       console.log("this error is from Login component :" + err);
