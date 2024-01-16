@@ -37,6 +37,7 @@ function App() {
 
   return (
     <div className="App">
+        
         <Router>
             <Navbar authSetter = {setIsAuth} username = {user}/>
           <Routes>

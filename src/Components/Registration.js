@@ -13,16 +13,9 @@ function Registration(props) {
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if(!emailRegex.test(user.email)){
-            window.alert("invalid email");
-            return;
-        }
-
         
         try{
-            const response = await axios.post("http://localhost:6969/user" , user);
+            const response = await axios.post("https://quantifyback.onrender.com/user" , user);
             if(response.data == "email already exists"){
               alert(response.data);
               setUser({
@@ -34,7 +27,7 @@ function Registration(props) {
               alert("resigtration successful");
               navigateTo('/login');
           }
-        }
+        } 
         catch(err){
             console.log(err);
         }
