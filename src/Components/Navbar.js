@@ -1,12 +1,12 @@
-import React from 'react';
+import React  from 'react';
 import navStyle from '../styles/navbar.module.css';
 import { useNavigate } from 'react-router-dom';
 import { isAuthenticated, removeToken } from '../AuthService';
-
-
+import { useState } from 'react';
 
 function Navbar(props) {
 
+  const [burgerMenu , setBurgerMenu] = useState(false);
   const navigate = useNavigate();
   
   const user = props.username;
@@ -23,6 +23,9 @@ function Navbar(props) {
     navigate('/login');
   }
 
+  const toggleBurger = () =>{
+    
+  }
   return (
     <div className={navStyle.navbar}>
       <div className={navStyle.logo}>Quantify</div>
@@ -31,8 +34,13 @@ function Navbar(props) {
         {isAuthenticated()?
           <div style={{display:'flex'}}>
             <p>welcome,  {user}</p>
-            <button>profile</button>
-            <button onClick={logout}>logout</button>
+            <div className={navStyle.menu}>
+              <button>profile</button>
+              <button onClick={logout}>logout</button>
+            </div>
+            <div className={navStyle.burger}>
+              <button onClick={toggleBurger}>menu</button>
+            </div>
           </div>
           :
           <div>

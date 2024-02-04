@@ -36,3 +36,16 @@
 .navItems button:hover{
     background-color: #415A77;
 }
+
+.burger{
+    display: none;
+}
+
+@media screen and (max-width : 600px){
+    .menu{
+        display: none;
+    }
+    .burger{
+        display: block;
+    }
+}
