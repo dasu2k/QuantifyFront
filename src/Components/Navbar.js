@@ -1,6 +1,6 @@
 import React  from 'react';
 import navStyle from '../styles/navbar.module.css';
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { isAuthenticated, removeToken } from '../AuthService';
 import { useState } from 'react';
 
@@ -24,8 +24,15 @@ function Navbar(props) {
   }
 
   const toggleBurger = () =>{
-    
+
   }
+
+  const previousLogs = () =>{
+    navigate('/prev');
+  }
+
+
+  
   return (
     <div className={navStyle.navbar}>
       <div className={navStyle.logo}>Quantify</div>
@@ -35,7 +42,8 @@ function Navbar(props) {
           <div style={{display:'flex'}}>
             <p>welcome,  {user}</p>
             <div className={navStyle.menu}>
-              <button>profile</button>
+            
+              <button onClick={previousLogs}>Previous Logs</button>
               <button onClick={logout}>logout</button>
             </div>
             <div className={navStyle.burger}>

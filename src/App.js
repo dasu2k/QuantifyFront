@@ -10,6 +10,7 @@ import AuthRoutes from './Components/AuthRoutes';
 import { useEffect, useState } from 'react';
 import {  getToken, isAuthenticated } from './AuthService';
 import axios from 'axios';
+import PreviousLogs from './Components/PreviousLogs';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
               <Route path='login' element={<Login authSetter = {setIsAuth} userSetter = {setUser} />}/>
             </Route>
             <Route element={<ProtectedRoute/>}>
+                <Route element={<PreviousLogs/>} path='/prev'/>
                 <Route element={<Food/>} path='/food'/>
             </Route>
           </Routes>
