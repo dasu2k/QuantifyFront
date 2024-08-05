@@ -1,0 +1,19 @@
+.menu{
+    background-color: white;
+    z-index: 10;
+    position: absolute;
+    top: 60px;
+    right: 0px;
+    color:black;
+}
+
+.menu ul{
+    padding: 0%;
+    list-style: none;
+    margin: 0px;
+}
+
+.menu li{
+    padding: 10px;
+    text-decoration: none;
+}

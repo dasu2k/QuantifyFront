@@ -3,6 +3,9 @@ import navStyle from '../styles/navbar.module.css';
 import {  useNavigate } from 'react-router-dom';
 import { isAuthenticated, removeToken } from '../AuthService';
 import { useState } from 'react';
+import BurgerMenu from './SubComponents/BurgerMenu';
+
+import { slide as Menu } from 'react-burger-menu';
 
 function Navbar(props) {
 
@@ -22,33 +25,19 @@ function Navbar(props) {
   const loginBtn = () =>{
     navigate('/login');
   }
-
-  const toggleBurger = () =>{
-
-  }
-
+  
   const previousLogs = () =>{
     navigate('/prev');
   }
 
-
-  
   return (
     <div className={navStyle.navbar}>
       <div className={navStyle.logo}>Quantify</div>
       <div className={navStyle.navItems}>
-        
         {isAuthenticated()?
           <div style={{display:'flex'}}>
             <p>welcome,  {user}</p>
-            <div className={navStyle.menu}>
-            
-              <button onClick={previousLogs}>Previous Logs</button>
-              <button onClick={logout}>logout</button>
-            </div>
-            <div className={navStyle.burger}>
-              <button onClick={toggleBurger}>menu</button>
-            </div>
+            <button onClick={logout}> log out</button>
           </div>
           :
           <div>

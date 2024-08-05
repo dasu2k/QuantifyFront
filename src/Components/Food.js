@@ -61,18 +61,16 @@ function Food() {
     }
   }
 
-  const newfoodPopUp = () =>{
-    
-  }
+  
 
   return (
+    
     <div className={styles.Food}>
-      
-      <div className={styles.dateAndAddNewBtn}>
-        <p className={styles.Date}>{formatedDate}</p>
-        <button onClick={newfoodPopUp}>+</button>
-      </div>
+
       <div className={styles.firstHalf}>
+      <div className={styles.dateContainer}>
+        <p className={styles.Date}>{formatedDate}</p>
+      </div>
         <table className={styles.Tab}>
           <thead>
             <tr>
